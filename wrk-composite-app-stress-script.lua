@@ -38,7 +38,7 @@ end
 -- SETUP
 function setup(thread)
    thread:set("id", counter)
-   thread:set("statuses", statuses)
+--    thread:set("statuses", statuses)
    table.insert(threads, thread)
    counter = counter + 1
 end
@@ -50,9 +50,10 @@ function init(args)
 
    jwt = args[1]
 
+--    print(jwt)
+
    wrk.headers["Accept"] = "*/*"
    wrk.headers["Content-type"] = "application/json"
-   wrk.headers["Host"] = "keb-keb.apps.rd.entando.org"
    wrk.headers["Authorization"] = "Bearer " .. jwt
 
 end
@@ -62,17 +63,18 @@ function request()
    requests = requests + 1
    counter = counter + 1
 
---    return wrk.format("GET", endpoints[10])
-   return wrk.format("GET", endpoints[counter])
+   req = wrk.format("GET", endpoints[counter])
+--    print(req)
+   return req
 end
 
 -- RESPONSE
 function response(status, headers, body)
    responses = responses + 1
     if status ~= 200 then
-        print('STATUS: ' .. status)
+        print('### STATUS: ' .. status)
     else
-        print('... OK')
+        print('... REQUEST OK')
     end
 
 --    if statuses[status] == nil then
