@@ -20,8 +20,6 @@ https://www.google.com/search?q=ciaocore&oq=ciaocore&aqs=chrome..69i57.4120j0j1&
 
 
 export ENTANDO_BASE_URL=http://keb-keb.apps.rd.entando.org
-
-export ENTANDO_BASE_URL=http://localhost:8080/api
 export KC_AUTH_URL=http://keb-kc-keb.apps.rd.entando.org/auth/realms/entando/protocol/openid-connect/token
 export KC_CLIENT_ID=keb-de
 export KC_SECRET=e5927a70-d4f4-4d26-b1cb-34b709a79c75

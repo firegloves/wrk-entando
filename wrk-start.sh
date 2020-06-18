@@ -23,6 +23,12 @@ else
 
 	jwt=$(echo $authResult | cut -d'"' -f4)
 
-	wrk2 -t 1 -c 1 -d 30s --timeout 10s -R 1 -s ./wrk-composite-app-stress-script.lua $ENTANDO_BASE_URL -- $jwt
+  # static command that needs only $ENTANDO_BASE_URL env var
+#	wrk2 -t 1 -c 1 -d 30s --timeout 10s -R 1 -s ./wrk-composite-app-stress-script.lua $ENTANDO_BASE_URL -- $jwt
+
+  # direct shell script command
 #	wrk2 -t $WRK_THREADS -c $WRK_CONNECTIONS -d $WRK_DURATION --timeout 10s -R $WRK_RATE -s ./wrk-composite-app-stress-script.lua $ENTANDO_BASE_URL -- $jwt
+
+  # docker image command
+	wrk2 -t $WRK_THREADS -c $WRK_CONNECTIONS -d $WRK_DURATION --timeout 10s -R $WRK_RATE -s /wrk-script/wrk-composite-app-stress-script.lua $ENTANDO_BASE_URL -- $jwt
 fi
