@@ -2,8 +2,8 @@
 
 export ENTANDO_BASE_URL=http://myapp-keb.apps.rd.entando.org
 export KC_AUTH_URL=http://keb-kc-keb.apps.rd.entando.org/auth/realms/entando/protocol/openid-connect/token
-export KC_CLIENT_ID=myapp-de
-export KC_SECRET=41f0ab80-0406-44c1-b5b7-1220024fb200
+export KC_CLIENT_ID=
+export KC_SECRET=
 export WRK_THREADS=10
 export WRK_CONNECTIONS=500
 export WRK_DURATION=1s
