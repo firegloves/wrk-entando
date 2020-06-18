@@ -1,8 +1,8 @@
 # WRK-ENTANDO
 
-What is [wrk](https://github.com/wg/wrk)
+What is [wrk2](https://github.com/giltene/wrk2)
 
-wrk-entando is a docker image based on [`williamyeh/wrk`](https://hub.docker.com/r/williamyeh/wrk/)
+wrk-entando is a docker image based on [`bootjp/wrk2`](https://hub.docker.com/r/bootjp/wrk2)
 
 You can use this image to automate HTTP benchmarking.
 
