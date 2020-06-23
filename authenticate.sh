@@ -6,7 +6,8 @@ authResult=$(curl -d $payload -X POST $KC_AUTH_URL)
 
 # checks for error
 error=$(echo $authResult | cut -d',' -f1 | cut -d':' -f1 | cut -d'"' -f2)
-if [ "$error" == "error" ]; then
+
+if [ "$error" == "error" ] || [ "$error" == "viewport" ]; then
 
 	errorMex=$(echo $authResult | cut -d',' -f1 | cut -d':' -f2 | cut -d',' -f1)
 
@@ -28,5 +29,5 @@ else
 
 	jwt=$(echo $authResult | cut -d'"' -f4)
 
-#	return jwt
+#	echo $jwt
 fi

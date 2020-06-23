@@ -1,6 +1,7 @@
 local counter = 0
 local threads = {}
 local endpoints = {
+    [0] = "/entando-de-app/api/userSettings",
   	[1] = "/entando-de-app/api/users/userProfiles/myGroupPermissions",
   	[2] = "/entando-de-app/api/pages?parentCode=homepage",
   	[3] = "/entando-de-app/api/pageModels?page=1&pageSize=0",
@@ -9,8 +10,7 @@ local endpoints = {
   	[6] = "/entando-de-app/api/groups?page=1&pageSize=0",
   	[7] = "/entando-de-app/api/database?page=1&pageSize=0",
   	[8] = "/entando-de-app/api/languages?page=1&pageSize=0",
-  	[9] = "/entando-de-app/api/pages?parentCode=service",
-  	[10] = "/entando-de-app/api/userSettings"
+  	[9] = "/entando-de-app/api/pages?parentCode=service"
   }
 -- local statuses = {}
 
@@ -50,8 +50,6 @@ function init(args)
 
    jwt = args[1]
 
---    print(jwt)
-
    wrk.headers["Accept"] = "*/*"
    wrk.headers["Content-type"] = "application/json"
    wrk.headers["Authorization"] = "Bearer " .. jwt
@@ -63,7 +61,7 @@ function request()
    requests = requests + 1
    counter = counter + 1
 
-   req = wrk.format("GET", endpoints[counter])
+   req = wrk.format("GET", endpoints[counter % 10])
 --    print(req)
    return req
 end
@@ -72,9 +70,10 @@ end
 function response(status, headers, body)
    responses = responses + 1
     if status ~= 200 then
-        print('### STATUS: ' .. status)
-    else
-        print('... REQUEST OK')
+        print('### ERROR STATUS: ' .. status)
+--    else
+--        print('... REQUEST OK')
+--        print(body)
     end
 
 --    if statuses[status] == nil then
